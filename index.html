@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Goal Tracker — Motivate Me</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="fx"></canvas>
+    <div class="app">
+      <div class="brand">
+        <div class="logo">GT</div>
+        <div class="brand-info">
+          <div class="left">
+            <h1>Goal Tracker</h1>
+            <div class="sub" id="goalNamePill">
+              Build your streak. Beat your goal
+            </div>
+          </div>
+          <div class="right">
+            <div class="pill" id="streakPill">🔥 Streak: 0</div>
+            <div class="muted" id="dateLine">Deadline: --/--/----</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUOTE -->
+      <div id="quoteCard" class="card">
+        <div class="quote" id="quoteText">Loading motivation…</div>
+      </div>
+
+      <!-- SETUP -->
+      <section id="setup" class="card setup-form">
+        <div class="field">
+          <label for="goal">Goal</label>
+          <input id="goal" placeholder="e.g., Read 20 pages daily" />
+        </div>
+
+        <div class="field">
+          <label for="tasks">Daily TODOs (one per line)</label>
+          <textarea
+            id="tasks"
+            rows="5"
+            placeholder="e.g., Open book
+Set 25-minute timer
+Read & take notes"
+          ></textarea>
+        </div>
+
+        <div class="row field">
+          <div style="flex: 1">
+            <label for="startDate">Start</label>
+            <input id="startDate" type="date" />
+            <div class="muted" id="startDatePreview"></div>
+          </div>
+          <div style="flex: 1">
+            <label for="deadline">Deadline</label>
+            <input id="deadline" type="date" />
+            <div class="muted" id="deadlinePreview"></div>
+          </div>
+        </div>
+
+        <button id="startBtn">Start Tracking</button>
+      </section>
+
+      <!-- TRACKING -->
+      <section id="tracking" class="hidden">
+        <div class="card">
+          <!-- Current day progress -->
+          <div class="stat">
+            <span>Today</span><span id="todayPct">0%</span>
+          </div>
+          <div class="progress"><div class="fill" id="todayFill"></div></div>
+          <!-- Overall progress -->
+          <div class="stat" style="margin-top: 8px">
+            <span>Overall (completed days)</span>
+            <span id="overallPct">0%</span>
+          </div>
+          <div class="progress"><div class="fill" id="overallFill"></div></div>
+        </div>
+
+        <div class="card">
+          <div id="todoList" class="grid" style="margin-top: 0px"></div>
+          <div class="row" style="margin-top: 10px">
+            <button id="markAll">Mark all done</button>
+            <button id="completeGoal" class="danger">Complete Goal</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div
+            id="badgesWrap"
+            class="grid"
+            style="grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px"
+          ></div>
+        </div>
+      </section>
+
+      <!-- HISTORY -->
+      <section id="history" class="hidden">
+        <div class="card">
+          <div class="pill">History</div>
+          <div id="historyList" class="grid" style="margin-top: 10px"></div>
+        </div>
+      </section>
+
+      <nav>
+        <button id="navSetup" class="ghost">Setup</button>
+        <button id="navTrack">Track</button>
+        <button id="navHistory" class="ghost">History</button>
+      </nav>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
