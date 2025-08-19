@@ -248,13 +248,18 @@ nav {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(18, 24, 51, 0.95);
+  /* background: rgba(18, 24, 51, 0.95); */
   backdrop-filter: blur(8px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   padding: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 480px;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(8px);
 }
 nav button {
   font-weight: 700;
