@@ -40,7 +40,11 @@ const getAll = (store) =>
     r.onsuccess = () => res(r.result || []);
   });
 
-const fmt = (d) => new Date(d).toISOString().slice(0, 10);
+const fmt = (d) => new Date(d).toLocaleString('en-CA', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit'
+});
 const todayStr = () => fmt(new Date());
 const fmtDisplay = (d) => new Date(d).toLocaleDateString("en-GB"); // dd/mm/yyyy
 
@@ -268,6 +272,7 @@ async function loadTracking(goal) {
   await ensureMissedDaysMarked(goal);
 
   show(els.tracking);
+
   els.goalNamePill.textContent =
     goal.title || "Build your streak. Beat your goal";
   els.dateLine.textContent = `Deadline: ${fmtDisplay(goal.deadline)}`;
@@ -275,6 +280,7 @@ async function loadTracking(goal) {
   // prepare today's record
   const today = todayStr();
   let rec = await get("history", today);
+
   if (!rec) {
     rec = {
       date: today,
