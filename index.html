@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Goal Tracker — Motivate Me</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- Favicon (browser tab icon) -->
+    <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon" />
+
+    <!-- PNG favicon alternatives (better for modern browsers) -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="icons/favicon-16x16.png"
+    />
+
+    <!-- Apple Touch Icon (when saved to iOS home screen) -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="icons/apple-touch-icon.png"
+    />
+
+    <!-- Android / PWA Icon -->
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <canvas id="fx"></canvas>
@@ -92,7 +121,12 @@ Read & take notes"
           <div
             id="badgesWrap"
             class="grid"
-            style="grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 5px; margin-bottom: 50px;"
+            style="
+              grid-template-columns: 1fr 1fr;
+              gap: 8px;
+              margin-top: 5px;
+              margin-bottom: 50px;
+            "
           ></div>
         </div>
       </section>
