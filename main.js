@@ -40,11 +40,12 @@ const getAll = (store) =>
     r.onsuccess = () => res(r.result || []);
   });
 
-const fmt = (d) => new Date(d).toLocaleString('en-CA', {
-  year: 'numeric',
-  month: '2-digit',
-  day: '2-digit'
-});
+const fmt = (d) =>
+  new Date(d).toLocaleString("en-CA", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 const todayStr = () => fmt(new Date());
 const fmtDisplay = (d) => new Date(d).toLocaleDateString("en-GB"); // dd/mm/yyyy
 
@@ -207,13 +208,24 @@ async function updateStreak() {
   const metaL = (await get("meta", "streak")) || { k: "streak", v: 0 };
   const hist = await getAll("history");
   const set = new Set(hist.filter((h) => h.allDone).map((h) => h.date));
+
   // count backwards from today
-  let d = new Date(todayStr());
+  let d = new Date();
   let count = 0;
+
+  // check if today done
+  const doneToday = set.has(fmt(new Date()));
+
+  // if today is not done, count backward from yesterday
+  if (!doneToday) {
+    d.setDate(d.getDate() - 1);
+  }
+
   while (set.has(fmt(d))) {
     count++;
     d.setDate(d.getDate() - 1);
   }
+
   metaL.v = count;
   await put("meta", metaL);
   if (count >= 7) await awardBadge("STREAK_7");
