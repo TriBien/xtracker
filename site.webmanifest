@@ -1,6 +1,7 @@
 {
     "name": "MakeItDone",
     "short_name": "MakeItDone",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
